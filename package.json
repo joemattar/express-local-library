@@ -1,6 +1,9 @@
 {
   "name": "express-local-library",
   "version": "0.0.0",
+  "engines": {
+    "node": "18.12.1"
+  },
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -14,6 +17,7 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-validator": "^6.14.2",
+    "helmet": "^6.0.1",
     "http-errors": "~1.6.3",
     "luxon": "^3.1.1",
     "mongoose": "^6.7.5",
