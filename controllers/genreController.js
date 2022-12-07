@@ -62,14 +62,14 @@ exports.genre_create_get = (req, res, next) => {
 // The array is passed to the router function and each method is called in order.
 exports.genre_create_post = [
   // Validate and sanitize the name field.
-  body("name", "Genre name required").trim().isLength({ min: 1 }).escape(),
+  body("name", "Genre name required").trim().isLength({ min: 1 }),
 
   // Process request after validation and sanitization.
   (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a genre object with escaped and trimmed data.
+    // Create a genre object with trimmed data.
     const genre = new Genre({ name: req.body.name });
 
     if (!errors.isEmpty()) {
@@ -169,14 +169,14 @@ exports.genre_update_get = (req, res, next) => {
 // Handle Genre update on POST.
 exports.genre_update_post = [
   // Validate and sanitize the name field.
-  body("name", "Genre name required").trim().isLength({ min: 1 }).escape(),
+  body("name", "Genre name required").trim().isLength({ min: 1 }),
 
   // Process request after validation and sanitization.
   (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a genre object with escaped and trimmed data.
+    // Create a genre object with trimmed data.
     const genre = new Genre({
       name: req.body.name,
       _id: req.params.id, //This is required, or a new ID will be assigned!

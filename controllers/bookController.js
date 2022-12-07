@@ -124,29 +124,20 @@ exports.book_create_post = [
   },
 
   // Validate and sanitize fields.
-  body("title", "Title must not be empty.")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("author", "Author must not be empty.")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("summary", "Summary must not be empty.")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("isbn", "ISBN must not be empty").trim().isLength({ min: 1 }).escape(),
+  body("title", "Title must not be empty.").trim().isLength({ min: 1 }),
+  body("author", "Author must not be empty.").trim().isLength({ min: 1 }),
+  body("summary", "Summary must not be empty.").trim().isLength({ min: 1 }),
+  body("isbn", "ISBN must not be empty").trim().isLength({ min: 1 }),
   // We then use a wildcard (*) in the sanitizer to individually validate each of the genre array entries.
   // The code below shows how - this translates to "sanitize every item below key genre".
-  body("genre.*").escape(),
+  body("genre.*"),
 
   // Process request after validation and sanitization.
   (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a Book object with escaped and trimmed data.
+    // Create a Book object with trimmed data.
     const book = new Book({
       title: req.body.title,
       author: req.body.author,
@@ -327,27 +318,18 @@ exports.book_update_post = [
   },
 
   // Validate and sanitize fields.
-  body("title", "Title must not be empty.")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("author", "Author must not be empty.")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("summary", "Summary must not be empty.")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("isbn", "ISBN must not be empty").trim().isLength({ min: 1 }).escape(),
-  body("genre.*").escape(),
+  body("title", "Title must not be empty.").trim().isLength({ min: 1 }),
+  body("author", "Author must not be empty.").trim().isLength({ min: 1 }),
+  body("summary", "Summary must not be empty.").trim().isLength({ min: 1 }),
+  body("isbn", "ISBN must not be empty").trim().isLength({ min: 1 }),
+  body("genre.*"),
 
   // Process request after validation and sanitization.
   (req, res, next) => {
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a Book object with escaped/trimmed data and old id.
+    // Create a Book object with trimmed data and old id.
     const book = new Book({
       title: req.body.title,
       author: req.body.author,

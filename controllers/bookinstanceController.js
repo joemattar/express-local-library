@@ -58,12 +58,9 @@ exports.bookinstance_create_get = (req, res, next) => {
 // Handle BookInstance create on POST.
 exports.bookinstance_create_post = [
   // Validate and sanitize fields.
-  body("book", "Book must be specified").trim().isLength({ min: 1 }).escape(),
-  body("imprint", "Imprint must be specified")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("status").escape(),
+  body("book", "Book must be specified").trim().isLength({ min: 1 }),
+  body("imprint", "Imprint must be specified").trim().isLength({ min: 1 }),
+  body("status"),
   body("due_back", "Invalid date")
     .optional({ checkFalsy: true })
     .isISO8601()
@@ -74,7 +71,7 @@ exports.bookinstance_create_post = [
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a BookInstance object with escaped/trimmed data.
+    // Create a BookInstance object with trimmed data.
     const bookinstance = new BookInstance({
       book: req.body.book,
       imprint: req.body.imprint,
@@ -177,12 +174,9 @@ exports.bookinstance_update_get = (req, res, next) => {
 // Handle bookinstance update on POST.
 exports.bookinstance_update_post = [
   // Validate and sanitize fields.
-  body("book", "Book must be specified").trim().isLength({ min: 1 }).escape(),
-  body("imprint", "Imprint must be specified")
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
-  body("status").escape(),
+  body("book", "Book must be specified").trim().isLength({ min: 1 }),
+  body("imprint", "Imprint must be specified").trim().isLength({ min: 1 }),
+  body("status"),
   body("due_back", "Invalid date")
     .optional({ checkFalsy: true })
     .isISO8601()
@@ -193,7 +187,7 @@ exports.bookinstance_update_post = [
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    // Create a BookInstance object with escaped/trimmed data and old id.
+    // Create a BookInstance object with trimmed data and old id.
     const bookinstance = new BookInstance({
       book: req.body.book,
       imprint: req.body.imprint,

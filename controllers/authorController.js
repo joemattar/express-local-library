@@ -65,7 +65,6 @@ exports.author_create_post = [
   body("first_name")
     .trim()
     .isLength({ min: 1 })
-    .escape()
     .withMessage("First name must be specified.")
     // Warning: Never validate names using isAlphanumeric() (as we have done above)
     // as there are many names that use other character sets.
@@ -76,7 +75,6 @@ exports.author_create_post = [
   body("family_name")
     .trim()
     .isLength({ min: 1 })
-    .escape()
     .withMessage("Family name must be specified.")
     // Warning: Never validate names using isAlphanumeric()
     .isAlphanumeric()
@@ -106,7 +104,7 @@ exports.author_create_post = [
     }
     // Data from form is valid.
 
-    // Create an Author object from "Author" model with escaped and trimmed data.
+    // Create an Author object from "Author" model with trimmed data.
     const author = new Author({
       first_name: req.body.first_name,
       family_name: req.body.family_name,
@@ -217,7 +215,6 @@ exports.author_update_post = [
   body("first_name")
     .trim()
     .isLength({ min: 1 })
-    .escape()
     .withMessage("First name must be specified.")
     // Warning: Never validate names using isAlphanumeric() (as we have done above)
     // as there are many names that use other character sets.
@@ -228,7 +225,6 @@ exports.author_update_post = [
   body("family_name")
     .trim()
     .isLength({ min: 1 })
-    .escape()
     .withMessage("Family name must be specified.")
     // Warning: Never validate names using isAlphanumeric()
     .isAlphanumeric()
@@ -258,7 +254,7 @@ exports.author_update_post = [
     }
     // Data from form is valid.
 
-    // Create an Author object from "Author" model with escaped and trimmed data and old id.
+    // Create an Author object from "Author" model with trimmed data and old id.
     const author = new Author({
       first_name: req.body.first_name,
       family_name: req.body.family_name,
