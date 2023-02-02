@@ -11,6 +11,8 @@ const catalogRouter = require("./routes/catalog"); //Import routes for "catalog"
 const compression = require("compression");
 const helmet = require("helmet");
 
+require("dotenv").config();
+
 // Create an express app instance
 const app = express();
 
